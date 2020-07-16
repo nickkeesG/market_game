@@ -3,7 +3,7 @@
 ![Code Architecture](https://raw.githubusercontent.com/nickkeesG/market_game/master/images/market_game_skeleton.png)
 
 ## main.py
-Calls simulator to obtain individual data points, and then analyses that data. 
+Calls simulator to obtain individual data points, and then analyzes that data. 
 
 ## simulator.py
 Runs a full simulation where a game is set up, and a NE is obtained by means of best response dynamics.
@@ -17,7 +17,7 @@ Contains any variable parameters pertaining to the setup of the Game object. Som
 ## game.py
 Code for the class Game. A Game object is composed of agents, as well high level functions for those agents.
 
-##agent.py
+## agent.py
 Code for the class Agent. Includes the beliefs of the agents, as well as code pertaining to their behavior.
 
 ## iterated_best_response.py

@@ -1,6 +1,6 @@
 # Roadmap
 
-![Code Architecture](https://github.com/nickkeesG/market_game/images/market_game_skeleton.png)
+![Code Architecture](https://raw.githubusercontent.com/nickkeesG/market_game/master/images/market_game_skeleton.png)
 
 ## main.py
 Calls simulator to obtain individual data points, and then analyses that data. 

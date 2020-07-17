@@ -1,8 +1,8 @@
 import custom_math
 
 class Agent:
-    def __init__(self, error_rate):
-        self.error_rate = error_rate
+    def __init__(self):
+        self.error_rate = 0.5
         self.belief = 0.5
 
     def update_belief(self, signal):

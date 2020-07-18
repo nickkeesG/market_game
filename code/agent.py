@@ -1,9 +1,19 @@
 import custom_math
 
 class Agent:
-    def __init__(self):
-        self.error_rate = 0.5
-        self.belief = 0.5
+    def __init__(self, endowment, error_rate):
+        self.error_rate = error_rate
+        self.belief = 0.5               #this is the agent's prior
+        self.endowment = endowment
+        self.strategy = None
+
+    def get_expected_utility(self, new_strategy, current_price):
+        new_price = current_price + self.endowment * (new_strategy - self.strategy)
+
+        shares_a = new_strategy * self.endowment / new_price
+        shares_b = (1 - new_strategy) * self.endowment / (1 - new_price)
+
+        return shares_a * self.belief + shares_b * (1 - self.belief)
 
     def update_belief(self, signal):
         evidence_size = custom_math.error_to_evidence(self.error_rate)

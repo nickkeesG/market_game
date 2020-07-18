@@ -8,12 +8,21 @@ def get_total_evidence(game):
         total += cm.prob_to_evidence(agent.belief)
     return total
 
-def run_simulation():
-    game = init_game()
+def run_simulation(true_state):
+    game = init_game(true_state)
+    run_ibr(game)
+    print("----")
     converged = run_ibr(game)
+
+    print_equilibrium(game)
+
     if converged:
         total_evidence = get_total_evidence(game)
         complete_information_belief = cm.evidence_to_prob(total_evidence)
-        return converged, game.price, complete_information_belief
+        return converged, game.get_price(), complete_information_belief
     else:
         return False, None, None
+
+def print_equilibrium(game):
+    for a in game.agents:
+        print(round(a.belief, 4), "\t", round(a.strategy, 5), "\t", round(a.get_expected_utility(a.strategy, game.get_price()), 4)) 

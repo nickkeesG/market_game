@@ -10,8 +10,6 @@ def get_total_evidence(game):
 
 def run_simulation(true_state):
     game = init_game(true_state)
-    run_ibr(game)
-    print("----")
     converged = run_ibr(game)
 
     print_equilibrium(game)

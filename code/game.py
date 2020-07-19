@@ -7,16 +7,22 @@ class Game:
         self.agents = [Agent(endowment_profile[i], error_profile[i]) for i in range(n_agents)]
         self.true_state = true_state
 
-    def distribute_signals(self):
+    def distribute_signals(self, signal_diff = None):
         correct_signal = "a" if self.true_state == "A" else "b"
         incorrect_signal = "b" if self.true_state == "A" else "a"
-        
-        for i in range(len(self.agents)):
-            e = self.agents[i].error_rate
-            if random.uniform(0,1) > e:
-                self.agents[i].update_belief(correct_signal)
-            else:
-                self.agents[i].update_belief(incorrect_signal)
+        if signal_diff == None:
+            for i in range(len(self.agents)):
+                e = self.agents[i].error_rate
+                if random.uniform(0,1) > e:
+                    self.agents[i].update_belief(correct_signal)
+                else:
+                    self.agents[i].update_belief(incorrect_signal)
+        else:
+            for i in range(len(self.agents)):
+                if i + signal_diff < len(self.agents)/2:
+                    self.agents[i].update_belief("a")
+                else:
+                    self.agents[i].update_belief("b")
 
     def get_price(self):
         demand_for_a = 0

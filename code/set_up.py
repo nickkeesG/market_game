@@ -6,7 +6,7 @@ from game import Game
 #Endowment: How much does each agent have to spend in the market?
 #Error:     How likely is it that the signal an agent receives does NOT match the true state (A/B)
 
-def init_game(true_state):
+def init_game(true_state, signal_diff):
     if ENDOWMENT_GENERATOR == "CONSTANT":
         endowment_profile = [1/N_AGENTS for i in range(N_AGENTS)]
     else:
@@ -18,7 +18,7 @@ def init_game(true_state):
         
     game = Game(N_AGENTS, endowment_profile, error_profile, true_state)
 
-    game.distribute_signals()
+    game.distribute_signals(signal_diff)
     game.init_strategy_profile()
     
     return game

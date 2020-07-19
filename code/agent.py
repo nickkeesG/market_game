@@ -10,8 +10,8 @@ class Agent:
     def get_expected_utility(self, new_strategy, current_price):
         new_price = current_price + self.endowment * (new_strategy - self.strategy)
 
-        shares_a = new_strategy * self.endowment / new_price
-        shares_b = (1 - new_strategy) * self.endowment / (1 - new_price)
+        shares_a = new_strategy * self.endowment / new_price if new_strategy > 0 else 0
+        shares_b = (1 - new_strategy) * self.endowment / (1 - new_price) if (1 - new_strategy) > 0 else 0
 
         return shares_a * self.belief + shares_b * (1 - self.belief)
 

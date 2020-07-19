@@ -8,9 +8,13 @@ class Game:
         self.true_state = true_state
 
     def distribute_signals(self, signal_diff = None):
-        correct_signal = "a" if self.true_state == "A" else "b"
-        incorrect_signal = "b" if self.true_state == "A" else "a"
-        if signal_diff == None:
+        sample_signals = True if signal_diff == None else False
+        
+        #In this case, sample signals(not predetermined)
+        if sample_signals:
+            correct_signal = "a" if self.true_state == "A" else "b"
+            incorrect_signal = "b" if self.true_state == "A" else "a"
+            
             for i in range(len(self.agents)):
                 e = self.agents[i].error_rate
                 if random.uniform(0,1) > e:

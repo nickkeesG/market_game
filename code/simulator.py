@@ -8,8 +8,8 @@ def get_total_evidence(game):
         total += cm.prob_to_evidence(agent.belief)
     return total
 
-def run_simulation(true_state, clue_discrepency = None, verbose = True):
-    game = init_game(true_state, clue_discrepency)
+def run_simulation(true_state, signal_diff = None, verbose = True):
+    game = init_game(true_state, signal_diff)
     converged = run_ibr(game, verbose)
 
     if verbose:

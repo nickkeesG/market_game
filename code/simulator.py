@@ -18,7 +18,8 @@ def run_simulation(true_state, signal_diff = None, verbose = True):
     if converged:
         total_evidence = get_total_evidence(game)
         complete_information_belief = cm.evidence_to_prob(total_evidence)
-        return converged, game.get_price(), complete_information_belief
+        average_belief = game.get_average_belief()
+        return converged, game.get_price(), complete_information_belief, average_belief
     else:
         return False, None, None
 

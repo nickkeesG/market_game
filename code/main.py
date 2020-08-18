@@ -9,7 +9,7 @@ market_prices = []
 complete_infos = []
 
 for i in range(81):
-    print(i)
+    print(i, " /81")
     signal_diff = i - 40
     true_state = "A" if random.uniform(0,1) > 0.5 else "B"
     result = run_simulation(true_state, signal_diff, verbose = False)

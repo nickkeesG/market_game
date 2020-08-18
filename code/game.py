@@ -16,11 +16,12 @@ class Game:
             incorrect_signal = "b" if self.true_state == "A" else "a"
             
             for i in range(len(self.agents)):
-                e = self.agents[i].error_rate
+                e = self.agents[i].error_rate                
                 if random.uniform(0,1) > e:
                     self.agents[i].update_belief(correct_signal)
                 else:
                     self.agents[i].update_belief(incorrect_signal)
+
         else:
             for i in range(len(self.agents)):
                 if i + signal_diff < len(self.agents)/2:

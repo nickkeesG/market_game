@@ -1,9 +1,10 @@
 import custom_math
+import parameters
 
 class Agent:
-    def __init__(self, endowment, error_rate):
+    def __init__(self, endowment, error_rate, prior = parameters.PRIOR):
         self.error_rate = error_rate
-        self.belief = 0.5               #this is the agent's prior
+        self.belief = prior             
         self.endowment = endowment
         self.strategy = None            #strategy will be set by the function game.init_strategy_profile()
 

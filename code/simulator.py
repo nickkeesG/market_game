@@ -1,11 +1,14 @@
 from set_up import init_game
 from iterated_best_response import run_ibr
 import custom_math as cm
+import parameters
 
 def get_total_evidence(game):
     total = 0
     for agent in game.agents:
         total += cm.prob_to_evidence(agent.belief)
+        total -= cm.prob_to_evidence(parameters.PRIOR)
+    total += cm.prob_to_evidence(parameters.PRIOR)
     return total
 
 def run_simulation(true_state, signal_diff = None, verbose = True):

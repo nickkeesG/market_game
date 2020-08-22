@@ -22,7 +22,7 @@ fig, (ax1, ax2) = plt.subplots(1, 2)
 fig.suptitle(str(p.N_AGENTS)+ " agents, " + str(p.ERROR_AVERAGE) + ' error')
 
 ax1.set(xlabel='complete information belief', ylabel='aggregated belief')
-x = np.linspace(min(market_prices)/1.2, 1-(1-max(market_prices))/1.2,100)
+x = np.linspace(min(market_prices), max(market_prices),100)
 ax1.plot(x, x, linestyle='dotted')
 ax1.scatter(complete_infos, market_prices)
 ax1.scatter(complete_infos, average_beliefs, marker = "+")
@@ -31,7 +31,7 @@ market_prices = [cm.prob_to_evidence(p) for p in market_prices]
 complete_infos = [cm.prob_to_evidence(p) for p in complete_infos]
 average_beliefs = [cm.prob_to_evidence(p) for p in average_beliefs]
 ax2.set(xlabel='complete information belief (bits)', ylabel='aggregated belief (bits)')
-x = np.linspace(min(market_prices)*1.5, max(market_prices)*1.5,100)
+x = np.linspace(min(market_prices), max(market_prices),100)
 ax2.plot(x, x, linestyle='dotted')
 ax2.scatter(complete_infos, market_prices)
 ax2.scatter(complete_infos, average_beliefs, marker = "+")

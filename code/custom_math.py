@@ -1,11 +1,6 @@
 import math
 
-def error_to_evidence(error):
-    prob_correct_signal = 1 - error
-    prob_wrong_signal = error
-    
-    evidence = math.log(prob_correct_signal / prob_wrong_signal, 2)
-    return evidence
+#These functions convert between the two scales: Probability and bits of evidence. Probability ranges from 0 to 1, while evidence ranges from -inf to +inf. Positive evidence is evidence for A and evidence against B, while negative evidence evidence is evidence for B, against A. 
 
 def evidence_to_prob(w):
     update_factor = 2**w

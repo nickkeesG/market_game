@@ -5,7 +5,7 @@ class Agent:
         self.error_rate = error_rate
         self.belief = 0.5               #this is the agent's prior
         self.endowment = endowment
-        self.strategy = None
+        self.strategy = None            #strategy will be set by the function game.init_strategy_profile()
 
     def get_expected_utility_function(self, current_price):
         old_strategy = self.strategy
@@ -27,12 +27,15 @@ class Agent:
         return shares_a * self.belief + shares_b * (1 - self.belief)
 
     def update_belief(self, signal):
-        evidence_size = custom_math.error_to_evidence(self.error_rate)
+        probability_signal_correct = 1 - self.error_rate
+        
         if signal == 'a':
-            new_evidence = evidence_size
+            probability_of_A_given_signal = probability_signal_correct
         else:
-            new_evidence = -1 * evidence_size
-
-        current_evidence = custom_math.prob_to_evidence(self.belief)
-        self.belief = custom_math.evidence_to_prob(current_evidence + new_evidence)
+            probability_of_A_given_signal = 1 - probability_signal_correct
+        
+        new_evidence = custom_math.prob_to_evidence(probability_of_A_given_signal)
+        prior_evidence = custom_math.prob_to_evidence(self.belief)
+        posterior_evidence = prior_evidence + new_evidence
+        self.belief = custom_math.evidence_to_prob(posterior_evidence)
         

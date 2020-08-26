@@ -29,6 +29,9 @@ class Game:
                 else:
                     self.agents[i].update_belief("b")
 
+    def get_weighted_average_belief(self):
+        return sum([a.belief*a.endowment for a in self.agents])
+
     def get_average_belief(self):
         return sum([a.belief for a in self.agents]) / len(self.agents)
 

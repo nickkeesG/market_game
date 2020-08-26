@@ -12,8 +12,8 @@ from game import Game
 def init_game(true_state, signal_diff):
     if ENDOWMENT_GENERATOR == "CONSTANT":
         endowment_profile = [1/N_AGENTS for i in range(N_AGENTS)]
-    elif ENDOWMENT_GENERATOR == "NORMAL":
-        endowment_profile = [abs(np.random.normal(0, ENDOWMENT_SIGMA/N_AGENTS)) for i in range(N_AGENTS)]
+    elif ENDOWMENT_GENERATOR == "BINOMIAL":
+        endowment_profile = [np.random.binomial(100, 0.5) for i in range(N_AGENTS)]
         endowment_profile = [e/sum(endowment_profile) for e in endowment_profile]
     else:
         endowment_profile = None #need to add different generators

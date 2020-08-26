@@ -1,0 +1,7 @@
+Below are the results of weighted average vs market price, and what is measured is the fraction of bits that are conserved in the aggregation process from the complete information belief, to the final aggregated belief.
+Results are averaged across 200 trials and include the standard deviation in ()
+
+
+Averaging:  0.020115900957964346 ( 0.0032192260828536336 )
+Mkt_price:  0.135560418934186 ( 0.056510472936314934 )
+

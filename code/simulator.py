@@ -3,12 +3,14 @@ from iterated_best_response import run_ibr
 import custom_math as cm
 import parameters
 
+#currently this function assumes a prior shared by all agents
 def get_total_evidence(game):
-    total = 0
+    #include the evidence all agents already have as part of the total evidence
+    total = cm.prob_to_evidence(parameters.PRIOR)
     for agent in game.agents:
+        #for each agent count what new evidence they have gained
         total += cm.prob_to_evidence(agent.belief)
         total -= cm.prob_to_evidence(parameters.PRIOR)
-    total += cm.prob_to_evidence(parameters.PRIOR)
     return total
 
 def run_simulation(true_state, signal_diff = None, verbose = True):
@@ -21,8 +23,8 @@ def run_simulation(true_state, signal_diff = None, verbose = True):
     if converged:
         total_evidence = get_total_evidence(game)
         complete_information_belief = cm.evidence_to_prob(total_evidence)
-        average_belief = game.get_average_belief()
-        return converged, game.get_price(), complete_information_belief, average_belief
+        weighted_average_belief = game.get_weighted_average_belief()
+        return converged, game.get_price(), complete_information_belief, weighted_average_belief
     else:
         return False, None, None
 

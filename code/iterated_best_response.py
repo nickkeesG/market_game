@@ -1,7 +1,7 @@
 import random
 from scipy.optimize import minimize 
 
-EPSILON = 0.00001
+EPSILON = 0.000001
 
 #TODO find algebraic solution to replace this function
 def find_best_strategy(agent, current_price):

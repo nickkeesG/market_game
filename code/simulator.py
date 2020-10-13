@@ -15,7 +15,7 @@ def get_total_evidence(game):
 
 def run_simulation(true_state, signal_diff = None, verbose = True):
     game = init_game(true_state, signal_diff)
-    converged = run_ibr(game, verbose)
+    converged = run_ibr(game, verbose=True)
 
     if verbose:
         print_equilibrium(game)

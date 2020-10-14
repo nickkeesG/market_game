@@ -15,10 +15,16 @@ def init_game(true_state, signal_diff):
     elif ENDOWMENT_GENERATOR == "BINOMIAL":
         endowment_profile = [np.random.binomial(100, 0.5) for i in range(N_AGENTS)]
         endowment_profile = [e/sum(endowment_profile) for e in endowment_profile]
+    elif ENDOWMENT_GENERATOR == "PARETO":
+        endowment_profile = [np.random.pareto(1) for i in range(N_AGENTS)]
+        endowment_profile = [e/sum(endowment_profile) for e in endowment_profile]
     else:
         endowment_profile = None #need to add different generators
     if ERROR_GENERATOR == "CONSTANT":
         error_profile = [ERROR_AVERAGE for i in range(N_AGENTS)]
+    elif ERROR_GENERATOR == "PARETO":
+        error_profile = [np.random.pareto(1) for i in range(N_AGENTS)]
+        error_profile = [e/sum(error_profile) for e in error_profile]
     else:
         endowment_profile = None #need to add different generators
     

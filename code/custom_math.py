@@ -7,4 +7,5 @@ def evidence_to_prob(w):
     return update_factor / (update_factor + 1)
 
 def prob_to_evidence(p):
-    return math.log(p, 2) - math.log((1-p), 2)
+    # Updated the conversion to tackle p>=1 
+    return (math.log(p, 2) - math.log((1-p), 2)) if p<1 else (math.log(p, 2) - 1)

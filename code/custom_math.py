@@ -8,4 +8,4 @@ def evidence_to_prob(w):
 
 def prob_to_evidence(p):
     # Updated the conversion to tackle p>=1 
-    return (math.log(p, 2) - math.log((1-p), 2)) if p<1 else (math.log(p, 2) - 1)
+    return (math.log(p, 2) - math.log((1-p), 2)) if 0<p<1 else 0

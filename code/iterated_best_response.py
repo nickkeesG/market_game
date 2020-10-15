@@ -5,10 +5,11 @@ import math
 EPSILON = 0.000001
 
 def find_best_strategy(agent, current_price):
+    #TODO: Update the temporary division by zero fix in the next line
     p_hat = current_price - agent.endowment*agent.strategy
     q_hat = (1-current_price) - agent.endowment*(1-agent.strategy)
     b = agent.belief
-    optimal_p = 1 / (1+ math.sqrt(((1-b)*q_hat)/(b*p_hat)))
+    optimal_p = 1 / (1+ math.sqrt(((1-b)*q_hat)/(b*p_hat))) if p_hat>0 else 0
     best_strategy = (optimal_p - p_hat)/agent.endowment
     return min(max(best_strategy, 0), 1)
     
